@@ -20,6 +20,10 @@ module.exports = {
         loader: 'json-loader',
       },
       {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader'],
+      },
+      {
         test: /\.hbs/,
         loader: 'handlebars-loader',
         exclude: /(node_modules|bower_components)/,
