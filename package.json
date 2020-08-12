@@ -4,7 +4,8 @@
   "description": "GoIT Group 4 JS Project",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack --mode production --config webpack.config.js",
+    "build": "npx webpack --mode development --config webpack.config.js",
+    "compile": "webpack --config webpack.config.js",
     "test": "test",
     "start": "webpack-dev-server --open",
     "deploy": "gh-pages -d build"
