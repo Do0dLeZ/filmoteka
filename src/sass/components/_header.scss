@@ -1,30 +1,3 @@
-// // ================================= общие стили
-// body {
-//   padding: 0;
-//   margin: 0;
-// }
-// p {
-//   padding: 0;
-//   margin: 0;
-// }
-// a {
-//   text-decoration: none;
-// }
-// .list-style {
-//   list-style: none;
-// }
-
-// h1,
-// h2,
-// h3,
-// h4,
-// h5 {
-//   margin: 0;
-//   padding: 0;
-// }
-
-// // =================================
-
 .header {
   width: 100%;
   background-position: center;
@@ -54,19 +27,6 @@
   background-clip: border-box;
 }
 
-// .container {
-//   width: 280px;
-//   margin-left: auto;
-//   margin-right: auto;
-//
-//   z-index: 1;
-//   @media screen and (min-width: 768px) and (max-width: 869px) {
-//     width: 620px;
-//   }
-//   @media screen and (min-width: 870px) {
-//     width: 870px;
-//   }
-// }
 .wrapper__header-nav {
   display: flex;
   align-items: center;
@@ -190,7 +150,7 @@
 
 // ======================================== WATCHED PAGE
 .header-btn {
-  width: 140px;
+  width: 130px;
   padding: 15px;
   background-color: transparent;
   color: #fff;
