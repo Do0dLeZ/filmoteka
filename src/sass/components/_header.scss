@@ -1,29 +1,37 @@
-// // ================================= общие стили
-// body {
-//   padding: 0;
-//   margin: 0;
-// }
-// p {
-//   padding: 0;
-//   margin: 0;
-// }
-// a {
-//   text-decoration: none;
-// }
-// .list-style {
-//   list-style: none;
-// }
+// ================================= общие стили
+body {
+  padding: 0;
+  margin: 0;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.list-style {
+  list-style: none;
+}
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5 {
-//   margin: 0;
-//   padding: 0;
-// }
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
 
-// // =================================
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+// =================================
 
 .header {
   width: 100%;
@@ -33,12 +41,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media screen and (min-width: 768px) and (max-width: 959px) {
+  @media screen and (min-width: 640px) and (max-width: 959px) {
     background-image: url('/src/images/header-bg-img@2x.png');
     background-clip: border-box;
     background-size: cover;
   }
-  @media screen and (min-width: 1023px) {
+  @media screen and (min-width: 960px) {
     max-width: 2000px;
     margin-left: auto;
     margin-right: auto;
@@ -54,71 +62,51 @@
   background-clip: border-box;
 }
 
-// .container {
-//   width: 280px;
-//   margin-left: auto;
-//   margin-right: auto;
-//
-//   z-index: 1;
-//   @media screen and (min-width: 768px) and (max-width: 869px) {
-//     width: 620px;
-//   }
-//   @media screen and (min-width: 870px) {
-//     width: 870px;
-//   }
-// }
+.container {
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  z-index: 1;
+  @media screen and (min-width: 640px) and (max-width: 869px) {
+    width: 620px;
+  }
+  @media screen and (min-width: 870px) {
+    width: 870px;
+  }
+}
 .wrapper__header-nav {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   margin-bottom: 50px;
-  text-align: center;
 }
-.logo__link {
-  position: relative;
-  margin-right: auto;
-  text-decoration: none;
-  &::before {
-    content: '';
-    position: absolute;
-    background-image: url('/src//assets/icons/film.svg');
-    width: 25px;
-    height: 25px;
-    left: 15px;
-    top: -15px;
-    transform: translate(-50%);
-    z-index: 3;
-    @media screen and (min-width: 768px) {
-      left: -20px;
-      top: 5px;
-    }
-  }
-}
+
 .logo__title {
   font-family: 'Roboto';
-
   font-size: 30px;
   color: #ffffff;
   display: none;
   transition: color 0.2s linear;
   &:hover,
   &:focus {
-    color: $btn-active-bgcolor;
+    color: #ff6b08;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 640px) {
     width: 620px;
     display: inline;
   }
 }
 
 .header-nav__list {
+  margin-left: auto;
   display: flex;
   flex-wrap: nowrap;
   font-size: 10px;
   font-family: 'Roboto';
   font-weight: medium;
-  @media screen and (min-width: 1023px) {
+  @media screen and (min-width: 960px) {
     font-size: 12px;
   }
 }
@@ -144,7 +132,7 @@
     content: '';
     position: absolute;
 
-    background-color: $btn-active-bgcolor;
+    background-color: #ff6b08;
     height: 2px;
     width: 100%;
     top: 100%;
@@ -152,21 +140,9 @@
     transition: opacity 0.2s linear;
   }
 }
-.header-search {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    background-image: url('/src/assets/icons/search.svg');
-    width: 10px;
-    height: 10px;
-    left: 95%;
-    top: 5px;
-    transform: translate(-50%, 0);
-  }
-}
 
 .header-search__input {
+  position: relative;
   color: #ffffff;
 
   width: 100%;
@@ -174,8 +150,7 @@
   border: none;
   border-bottom: 1px #666767 solid;
   margin-bottom: 30px;
-
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 640px) {
     width: 340px;
   }
 }
@@ -206,9 +181,9 @@
   }
   &:hover,
   &:focus {
-    background-color: $btn-active-bgcolor;
-    border-color: $btn-active-bgcolor;
-    box-shadow: $btn-active-bgcolor 8px 0 43px;
+    background-color: #ff6b08;
+    border-color: #ff6b08;
+    box-shadow: #ff6b08 8px 0 43px;
   }
 }
 // ========================================
