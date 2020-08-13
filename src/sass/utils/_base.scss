@@ -1,0 +1,37 @@
+// lists styles
+.list-style {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+// links styles
+.link-style {
+  display: block;
+  text-decoration: none;
+}
+
+// buttons styles
+.button {
+  display: inline-block;
+  padding: 16px 40px 16px 40px;
+  min-width: 130px;
+  border: 2px;
+  border-color: #ffffff;
+  border-radius: 4px;
+  font-family: $main-font-text;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  background-color: transparent;
+  color: $main-text-color;
+  cursor: pointer;
+  transition: background-color 250ms linear;
+
+  &:hover,
+  &:focus {
+    background-color: $btn-bgcolor;
+    border: none;
+  }
+}
