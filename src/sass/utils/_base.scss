@@ -53,29 +53,17 @@ html {
 }
 
 // container
-@media screen and (max-width: 767px) {
-  .container {
-    padding: 0 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 320px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .container {
+.container {
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 320px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
     padding: 0 74px;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 768px;
   }
-}
-
-@media screen and (min-width: 1024px) {
-  .container {
+  @media screen and (min-width: 1024px) {
     padding: 0 74px;
-    margin-left: auto;
-    margin-right: auto;
     max-width: 1024px;
   }
 }
