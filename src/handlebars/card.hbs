@@ -1,0 +1,21 @@
+<div class="card">
+    <img src="{{poster_path}}" alt="Official poster {{original_title}}" class="card_img" width="280px" />
+    <h2 class="card_title">{{title}}</h2>
+    <div class="details">
+        <p> Vote / Votes <span>{{vote_count}} / {{vote_average}}</span></p>
+        <p> Popularity <span>{{popularity}}</span></p>
+        <p> Original Title <span>{{original_title}}</span></p>
+        <p> Genre <span> {{#each genre_ids}}
+                {{}}
+                {{/each}}</span></p>
+    </div>
+
+    <h3>About</h3>
+    <p>{{overview}}</p>
+
+    <div class="card_button-conteiner">
+        <button class="card_button--add-to-watched"></button>
+        <button class="card_button--add-to-queue"></button>
+    </div>
+
+</div>
