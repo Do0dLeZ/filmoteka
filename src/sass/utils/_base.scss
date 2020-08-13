@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 // lists styles
 .list-style {
   margin: 0px;
@@ -19,7 +29,7 @@
   border: 2px;
   border-color: #ffffff;
   border-radius: 4px;
-  font-family: $main-font-text;
+  // font-family: $main-font-text;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
@@ -31,7 +41,41 @@
 
   &:hover,
   &:focus {
-    background-color: $btn-bgcolor;
+    background-color: $btn-active-bgcolor;
     border: none;
+  }
+}
+
+// input styles
+
+.input {
+  background-color: transparent;
+}
+
+// container
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding: 0 74px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 74px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
   }
 }
