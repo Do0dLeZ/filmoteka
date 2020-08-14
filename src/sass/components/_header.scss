@@ -11,7 +11,7 @@
     background-clip: border-box;
     background-size: cover;
   }
-  @media screen and (min-width: 1023px) {
+  @media screen and (min-width: 1024px) {
     max-width: 2000px;
     margin-left: auto;
     margin-right: auto;
@@ -39,21 +39,21 @@
   position: relative;
   margin-right: auto;
   text-decoration: none;
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   background-image: url('/src//assets/icons/film.svg');
-  //   width: 25px;
-  //   height: 25px;
-  //   left: 15px;
-  //   top: -15px;
-  //   transform: translate(-50%);
-  //   z-index: 3;
-  //   @media screen and (min-width: 768px) {
-  //     left: -20px;
-  //     top: 5px;
-  //   }
-  // }
+  &::before {
+    content: '';
+    position: absolute;
+    background-image: url('/src//assets/icons/film.svg');
+    width: 25px;
+    height: 25px;
+    left: 15px;
+    top: -15px;
+    transform: translate(-50%);
+    z-index: 3;
+    @media screen and (min-width: 768px) {
+      left: -20px;
+      top: 4px;
+    }
+  }
 }
 .logo__title {
   font-family: 'Roboto';
