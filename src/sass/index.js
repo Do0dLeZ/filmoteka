@@ -1,8 +1,8 @@
-import movieService from './js/services/apiService';
+import imgService from './js/services/apiService';
 import updateImgMarkup from './js/services/markupRender';
 
 const searchForm = document.querySelector('.js-search-form');
-const root = document.querySelector('.root');
+const ulRef = document.querySelector('.root');
 
 searchForm.addEventListener('submit', searchFormSubmitHandler);
 
@@ -10,20 +10,25 @@ function searchFormSubmitHandler(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
-  movieService.query = form.elements.query.value;
+  imgService.query = form.elements.query.value;
 
   clearImgContainer();
-  movieService.resetPage();
-  fetchMovie();
+  imgService.resetPage();
+  fetchImg();
   form.reset();
 }
 
-function fetchMovie() {
-  movieService.fetchMovie().then(results => {
+function fetchImg() {
+  imgService.fetchImg().then(results => {
     updateImgMarkup(results);
+
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
   });
 }
 
 function clearImgContainer() {
-  root.innerHTML = '';
+  ulRef.innerHTML = '';
 }
