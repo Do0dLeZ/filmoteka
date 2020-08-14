@@ -1,12 +1,13 @@
-<ul class="container movie-list">
+<ul class="card_item">
     {{#each this}}
-    <li class="list-item" id="{{this.id}}">
+    <li class="card_item" id="{{this.id}}">
         <div>
-            <img src="{{this.poster_path}}" alt="{{this.title}}">
-            <h2>{{this.title}}</h2>
-            <p>{{this.genre_ids}} | {{this.release_date}}<span>{{this.popularity}}</span></p>
+            <img class="card_img card-view" src="https://image.tmdb.org/t/p/w58_and_h87_face{{this.poster_path}}"
+                alt="{{this.title}}">
+            <h2 class="card_title">{{this.title}}</h2>
+            <p class="card_description">{{this.genre_ids}}|{{this.release_date}}<span
+                    class="details_popularity">{{this.popularity}}</span></p>
         </div>
     </li>
     {{/each}}
 </ul>
-{{!-- https://image.tmdb.org/t/p/w58_and_h87_face/this.poster_paths --}}
