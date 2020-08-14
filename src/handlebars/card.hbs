@@ -1,0 +1,43 @@
+<div class="card">
+
+    <div class="card__img-wrapper">
+        <img class="card__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}">
+    </div>
+
+    <div class="card__content content">
+
+        <div class="content__details details">
+            <h2 class="details__title">{{title}}</h2>
+
+           <div class="details__block">
+              <p>Vote / Votes</p>
+              <p>{{vote_average}} / {{vote_count}}</p>
+           </div>
+           <div class="details__block">
+              <p>Popularity</p>
+              <p>{{popularity}}</p>
+           </div>
+           <div class="details__block">
+              <p>Original Title</p>
+              <p>{{original_title}}</p>
+           </div>
+           <div class="details__block">
+              <p>Genre</p>
+              {{#each genres}}
+              <span>{{name}}</span>
+              {{/each}}
+        </div>
+
+        </div>
+
+        <div class="content__about about">
+                <h3 class="about-title">ABOUT</h3>
+                <p class="about-text">{{overview}}</p>
+        </div>
+
+        <div class="content__buttons">
+            <button class="content__btn" type="button">add to Watched</button>
+            <button class="content__btn" type="button">add to queue</button>
+        </div>
+    </div>
+</div>
