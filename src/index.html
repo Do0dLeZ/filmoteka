@@ -3,6 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -50,6 +56,74 @@
         </div>
       </div>
     </header>
+
+    <div class="pagination-container">
+      <nav aria-label="movie-list_pagination" class="movie-list_pagination">
+        <ul class="pagination pagination_list">
+          <li class="page-item pagination_button">
+            <a
+              class="pagination-link pagination-link__focus arrow-butt"
+              href="#"
+              ><svg
+                id="arrow"
+                class="arrow"
+                viewBox="0 0 512 512"
+                height="15"
+                width="15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m206.812 34.446-206.812 206.673 206.743 206.674 24.353-24.284-165.167-165.167h416.31v-34.445h-416.31l165.236-165.236z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link" href="#"
+              ><p class="pagination-number">...</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">1</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">12</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">123</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link" href="#"
+              ><p class="pagination-number">...</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a
+              class="pagination-link pagination-link__focus arrow-butt rotate"
+              href="#"
+              ><svg
+                id="arrow"
+                class="arrow"
+                viewBox="0 0 512 512"
+                height="15"
+                width="15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m206.812 34.446-206.812 206.673 206.743 206.674 24.353-24.284-165.167-165.167h416.31v-34.445h-416.31l165.236-165.236z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <script src="/src/index.js"></script>
   </body>
