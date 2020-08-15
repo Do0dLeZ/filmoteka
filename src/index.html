@@ -30,26 +30,57 @@
             </div>
           </nav>
 
-          <div class="wrapper-header-btn">
+          <!-- <div class="wrapper-header-btn">
             <button class="header-btn">Watched</button>
             <button class="header-btn">Queue</button>
-          </div>
-
-          <!-- <label class="header-search">
-            <input
-              class="header-search__input"
-              type="text"
-              name="search__films"
-              placeholder="Поиск фильмов"
-            />
-          </label>
+          </div> -->
+          <form class="input-js">
+            <label class="header-search">
+              <input
+                class="header-search__input input-js"
+                type="text"
+                name="search__films"
+                placeholder="Поиск фильмов"
+              />
+            </label>
+          </form>
           <p class="header-search__came-back visually-hidden">
             Search result not successful. Enter the correct movie name and try
             again.
-          </p> -->
+          </p>
         </div>
       </div>
     </header>
+
+    <div class="pagination-wrapper visually-hidden">
+      <nav aria-label="Page navigation example ">
+        <div class="navigation-js pagination justify-content-center">
+          <button class="page-link" href="#" tabindex="-1" id="previous-page">
+            Previous
+          </button>
+          <button
+            class="page-link first-page visually-hidden"
+            href=""
+            id="first-page"
+          ></button>
+          <button
+            class="page-link visually-hidden"
+            href="#"
+            id="previous-pages"
+          >
+            ...
+          </button>
+
+          <ul class="pagination justify-content-center pagination-js"></ul>
+
+          <button class="page-link visually-hidden" href="#" id="next-pages">
+            ...
+          </button>
+          <button class="page-link last-page visually-hidden" href=""></button>
+          <button class="page-link" href="#" id="next-page">Next</button>
+        </div>
+      </nav>
+    </div>
 
     <script src="/src/index.js"></script>
   </body>
