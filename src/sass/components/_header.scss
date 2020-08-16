@@ -20,6 +20,30 @@
     background-size: cover;
   }
 }
+
+.header__details {
+  width: 100%;
+  background-position: center;
+  background-image: url('/src/images/header-details-bg-img@1x.png');
+  background-clip: border-box;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    background-image: url('/src/images/header-details-bg-img@2x.png');
+    background-clip: border-box;
+    background-size: cover;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('/src/images/header-details-bg-img@3x.png');
+    background-clip: border-box;
+    background-size: cover;
+  }
+}
+
 .header--overlay {
   padding-top: 50px;
   padding-bottom: 100px;
