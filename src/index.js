@@ -4,7 +4,11 @@ import {
   renderCardsAndPagination as renderHomeCards,
   // renderHeader as renderHeaderHome,
 } from './js/components/renderCards.js';
-
+import { renderCards, renderCard } from './js/components/renderCards.js';
+import {
+  requestPopularMovies,
+  requestMovieByID,
+} from './js/services/apiService.js';
 // ============================ MAIN PARAMS ======================================
 
 let homePage = 1;
