@@ -14,12 +14,14 @@
 }
 
 .list-item_overlay {
-  width: 280px;
   height: 403px;
   border-radius: 5px;
   background-color: $main-bgcolor;
   overflow: hidden;
   justify-content: center;
+}
+.list-item_poster {
+  max-width: 280px;
 }
 .list-item_description {
   margin-top: 5px;
@@ -33,6 +35,7 @@
   font-weight: 500;
   font-family: $main-font-text;
   text-transform: capitalize;
+  text-align: left;
 }
 .list-item_title {
   text-transform: uppercase;
@@ -66,20 +69,27 @@
   .movie-list {
     width: 620px;
   }
+  .list-item_poster {
+    max-width: 295px;
+  }
+  .list-item_description {
+    max-width: 295px;
+  }
   .list-item {
+    width: 295px;
     margin-bottom: 30px;
   }
   .list-item:nth-child(2n) {
     margin-left: 30px;
   }
-  .list-item_overlay {
-    width: 294px;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .movie-list {
-    width: 1200px;
+    width: 870px;
+  }
+  .list-item_poster {
+    max-width: 270px;
   }
   .list-item_description {
     max-width: 270px;
@@ -89,10 +99,7 @@
     margin-bottom: 30px;
     margin-right: 30px;
   }
-  .list-item:nth-child(4n) {
+  .list-item:nth-child(3n) {
     margin-right: 0;
-  }
-  .list-item_overlay {
-    width: 270px;
   }
 }
