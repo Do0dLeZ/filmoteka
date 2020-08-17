@@ -1,5 +1,9 @@
 'use-strict';
 
-const renderHeaderHome = () => {
-    
-}
+import templateHeaderHome from '../../handlebars/headerHome.hbs';
+
+const renderHeaderHome = elem => {
+  elem.insertAdjacentHTML('beforeend', templateHeaderHome());
+};
+
+export { renderHeaderHome };

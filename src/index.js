@@ -1,10 +1,7 @@
 import './sass/main.scss';
 
-import {
-  renderCardsAndPagination as renderHomeCards,
-  renderHeader as renderHomeHeader,
-} from './js/components/renderCards.js';
-
+import { renderCardsAndPagination as renderHomeCards } from './js/components/renderCards.js';
+import { renderHeaderHome } from './js/components/renderHeader.js';
 import { requestPopularMovies } from './js/services/apiService.js';
 
 const refs = {
@@ -17,7 +14,7 @@ const refs = {
 // ========================== RENDERS   =============================
 
 const renderHomePage = () => {
-//   renderHomeHeader(refs.headerContainer);
+  renderHeaderHome(refs.headerContainer);
   requestPopularMovies(1).then(data =>
     renderHomeCards(refs.mainContainer, data),
   );

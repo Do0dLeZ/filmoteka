@@ -1,7 +1,8 @@
-.container {
-  display: flex;
-}
+// .container {
+  
+// }
 .movie-list {
+  display: flex;
   margin-top: 20px;
   width: 280px;
   padding: 0;
@@ -45,9 +46,9 @@
   font-weight: bold;
   font-size: 15px;
 }
-.list-item_poster {
-  object-fit: fill;
-}
+// .list-item_poster {
+//   object-fit: fill;
+// }
 .list-item_split {
   margin-top: auto;
   margin-bottom: auto;
