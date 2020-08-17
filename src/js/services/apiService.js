@@ -1,5 +1,4 @@
 import axios from 'axios';
-import maxPagePagination from '../components/pagination';
 
 // Ключик пока положил сюда, потом решим где будем хранить 😋
 const key = '315e08344ecf67d3b7c1eb2e8ad237c9';
@@ -23,9 +22,7 @@ export default {
         `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${keyword}&page=${currentPage}`,
       )
       .then(response => {
-        console.log(response.data);
-        maxPagePagination(response.data.total_pages);
-        return response.data.results;
+        return response.data;
       })
       .catch(error => {
         throw new Error(error);
