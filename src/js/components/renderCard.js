@@ -5,6 +5,7 @@ const mainContainer = document.querySelector('.info-container');
 
 const renderCard = res => {
   mainContainer.innerHTML = '';
+  console.dir(res);
   mainContainer.insertAdjacentHTML('beforeend', renderSingleCard(res));
 };
 

@@ -63,7 +63,11 @@
                         </li>
                         <li class="card__item">{{popularity}}</li>
                         <li class="card__item">{{original_title}}</li>
-                        <li class="card__item">{{name}}</li>
+                        <li class="card__item">
+                            {{#each genres}}
+                            {{this.name}}
+                            {{/each}}
+                        </li>
                     </ul>
                 </div>
                 <div class="card__text desc">
