@@ -5,3 +5,15 @@
 .footer-text__accent {
   text-decoration-line: underline;
 }
+
+.footer-text__icon {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 15px;
+
+    background-image: url(/src/assets/icons/filmoteka-icons/SVG/favorite-heart-button.svg);
+  }
+}

@@ -1,4 +1,4 @@
-import apiService from '../services/apiService';
+import { requestSearchByQuery } from '../services/apiService';
 
 const {
   paginationListWrapper,
@@ -34,14 +34,15 @@ let markupPage = 1;
 
 let search;
 
-async function paginationService(activePage) {
-  await apiService.getMoviesByInput(search, activePage).then(data => {
+async function paginationServiceRequestSearchByQuery(activePage) {
+  await requestSearchByQuery(search, activePage).then(data => {
     totalPage = data.total_pages;
     console.log(data.results);
   });
 
   showPaginationButtons();
 }
+
 function showPaginationButtons() {
   paginationWrapper.classList.remove('display-none');
 
@@ -85,7 +86,8 @@ function showPaginationButtons() {
 
 function togglePagination(event) {
   eventTarget = event.target.id;
-  console.log(event.target);
+  const className =
+    'pagination_button pagination-link pagination-number pagination-link__focus btn-page';
   if (eventTarget === 'first-page') {
     markupPage = 1;
     markupPaginationList();
@@ -97,9 +99,9 @@ function togglePagination(event) {
     showPaginationButtons();
   }
 
-  if (event.target.className === 'page-link btn-page') {
+  if (event.target.className === className) {
     activePage = Number(event.target.innerText);
-    paginationService(activePage);
+    paginationServiceRequestSearchByQuery(activePage);
   }
 
   if (eventTarget === 'previous-pages') {
@@ -122,7 +124,7 @@ function togglePagination(event) {
       return;
     }
     activePage += 1;
-    paginationService(activePage);
+    paginationServiceRequestSearchByQuery(activePage);
     if (activePage > Number(pages[4].innerHTML)) {
       markupPage += 5;
       markupPaginationList();
@@ -137,7 +139,7 @@ function togglePagination(event) {
       markupPage -= 5;
       markupPaginationList();
     }
-    paginationService(activePage);
+    paginationServiceRequestSearchByQuery(activePage);
   }
 }
 
@@ -151,7 +153,7 @@ function searchFilmValue(event) {
   event.preventDefault();
   search = event.currentTarget.elements.search__films.value;
   markupPaginationList();
-  return paginationService(activePage);
+  return paginationServiceRequestSearchByQuery(activePage);
 }
 
 // class Pagination {
