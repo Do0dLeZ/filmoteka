@@ -1,11 +1,9 @@
 import './sass/main.scss';
-
-import { renderCards, renderCard } from './js/components/renderCards.js';
-import { renderHeaderHome } from './js/components/renderHeader.js';
+import renderHeaderHome from './js/components/renderHeader';
 import {
-  requestPopularMovies,
-  requestMovieByID,
-} from './js/services/apiService.js';
+  renderCardsAndPagination as renderHomeCards,
+  // renderHeader as renderHeaderHome,
+} from './js/components/renderCards.js';
 
 // ============================ MAIN PARAMS ======================================
 
