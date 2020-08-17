@@ -1,13 +1,16 @@
 import './sass/main.scss';
-
-import { renderCardsAndPagination as renderHomeCards } from './js/components/renderCards.js';
+import renderHeaderHome from './js/components/renderHeader';
+import {
+  renderCardsAndPagination as renderHomeCards,
+  // renderHeader as renderHeaderHome,
+} from './js/components/renderCards.js';
 import checkAndRenderTarget from './js/components/renderCard';
-import { renderHeaderHome } from './js/components/renderHeader.js';
+
+import { renderCards } from './js/components/renderCards.js';
 import {
   requestPopularMovies,
   // requestMovieByID,
 } from './js/services/apiService.js';
-
 // ============================ MAIN PARAMS ======================================
 
 let homePage = 1;
@@ -36,7 +39,7 @@ const renderHomePage = () => {
   refs.libraryBtn = document.querySelector('#link-library');
 
   requestPopularMovies(homePage)
-    .then(data => renderHomeCards(refs.mainContainer, data))
+    .then(data => renderCards(refs.mainContainer, data))
     .finally(() => {
       refs.mainContainer
         .querySelector('.movie-list')
