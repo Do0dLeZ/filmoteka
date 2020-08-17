@@ -22,8 +22,8 @@ const initGenres = () => {
     .get('/3/genre/movie/list', { params: { ...mainRequestParams } })
     .then(response => response.data)
     .then(data => {
-      data.genersArr.forEach(genre => {
-        genres[gener.id] = genre.name;
+      data.genres.forEach(genre => {
+        genres[genre.id] = genre.name;
       });
     });
 };
@@ -32,10 +32,15 @@ initGenres();
 
 // ==============================     GENRES    ============================
 
-const getGenresNames = (arrId = []) => {
-  return arrId.map(id => {
-    return { id, name: genres[id].name };
+const initInfoForMovies = (movies = []) => {
+  movies.forEach(movie => {
+    movie.genres = movie.genre_ids.map(id => {
+      return { id, name: genres[id] };
+    });
+    movie.year = movie.release_date.substring(0, 4);
   });
+
+  return movies;
 };
 
 // ==============================    REQUESTS   ============================
@@ -43,7 +48,7 @@ const getGenresNames = (arrId = []) => {
 const requestPopularMovies = page => {
   return axios
     .get('/3/movie/popular', { params: { ...mainRequestParams, page } })
-    .then(response => response.data.results)
+    .then(response => response.data)
     .catch(error => {
       throw new Error(error);
     });
@@ -68,5 +73,5 @@ export {
   requestMovieByID,
   requestPopularMovies,
   requestSearchByQuery,
-  getGenresNames,
+  initInfoForMovies,
 };

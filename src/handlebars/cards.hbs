@@ -1,0 +1,18 @@
+<div class="container">
+    <ul class="container movie-list">
+        {{#each movies}}
+        <li class="list-item">
+            <div class="list-item_overlay">
+                <img class="list-item_poster" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{this.original_title}}">
+            </div>
+            <h4 class="list-item_text list-item_title">{{this.original_title}}</h4>
+            <div class="container list-item_description">
+                <p class="list-item_text">{{#each this.genres}}{{this.name}} {{/each}} <span class="bold-line">|</span>
+                    {{this.year}}</p>
+                {{!-- <div class="list-item_split"></div> --}}
+                {{!-- <p class="list-item_text"></p> --}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
