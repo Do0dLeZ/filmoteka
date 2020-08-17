@@ -41,6 +41,13 @@
   color: $cards-title-color;
   margin-top: 10px;
 }
+.bold-line {
+  font-weight: bold;
+  font-size: 15px;
+}
+.list-item_poster {
+  object-fit: fill;
+}
 .list-item_split {
   margin-top: auto;
   margin-bottom: auto;
@@ -74,13 +81,17 @@
 
 @media screen and (min-width: 1024px) {
   .movie-list {
-    width: 870px;
+    width: 1200px;
+  }
+  .list-item_description {
+    max-width: 270px;
   }
   .list-item {
+    width: 270px;
     margin-bottom: 30px;
     margin-right: 30px;
   }
-  .list-item:nth-child(3n) {
+  .list-item:nth-child(4n) {
     margin-right: 0;
   }
   .list-item_overlay {

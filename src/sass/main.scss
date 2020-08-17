@@ -2,9 +2,10 @@
 @import './utils/_colors.scss';
 @import './utils/_base.scss';
 @import './utils/fonts';
-@import './components/card';
 
-@import '~bootstrap/scss/bootstrap';
+@import './components/card';
+@import './components/cards';
+
 @import './components/header';
 @import './components/footer';
 

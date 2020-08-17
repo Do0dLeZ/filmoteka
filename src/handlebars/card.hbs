@@ -1,4 +1,4 @@
-<div class="card">
+{{!-- <div class="card">
 
     <div class="card__img-wrapper">
         <img class="card__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}">
@@ -41,4 +41,42 @@
             <button class="content__btn" type="button">add to queue</button>
         </div>
     </div>
-</div>
+</div> --}}
+<section class="card">
+    <div class="container">
+        <div class="card__wrapper">
+            <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}}" class="card__img" width="280"
+                height="404" />
+            <div class="card__box">
+                <h2 class="card__title">{{original_title}}</h2>
+                <div class="card__desc">
+                    <ul class="card__list--name list-style">
+                        <li class="card__item">Vote / Votes</li>
+                        <li class="card__item">Popularity</li>
+                        <li class="card__item">Original Title</li>
+                        <li class="card__item">Genre</li>
+                    </ul>
+                    <ul class="card__list--desc list-style">
+                        <li class="card__item">
+                            <span class="card__item--active">{{vote_average}}</span><span
+                                class="line">/</span>{{vote_count}}
+                        </li>
+                        <li class="card__item">{{popularity}}</li>
+                        <li class="card__item">{{original_title}}</li>
+                        <li class="card__item">{{name}}</li>
+                    </ul>
+                </div>
+                <div class="card__text desc">
+                    <h3 class="desc__title">ABOUT</h3>
+                    <p class="desc__text">
+                        {{overview}}
+                    </p>
+                </div>
+                <div class="btn">
+                    <button class="btn__act">ADD TO WATCHED</button>
+                    <button class="btn__act">ADD TO QUEUE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
