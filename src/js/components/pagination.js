@@ -118,6 +118,9 @@ function togglePagination(event) {
   }
 
   if (eventTarget === 'next-page') {
+    if (activePage === totalPage) {
+      return;
+    }
     activePage += 1;
     paginationService(activePage);
     if (activePage > Number(pages[4].innerHTML)) {
@@ -125,7 +128,11 @@ function togglePagination(event) {
       markupPaginationList();
     }
   } else if (eventTarget === 'previous-page') {
+    if (activePage === 1) {
+      return;
+    }
     activePage -= 1;
+
     if (activePage < Number(pages[4].innerHTML)) {
       markupPage -= 5;
       markupPaginationList();
