@@ -1,10 +1,11 @@
 import './sass/main.scss';
 
 import { renderCardsAndPagination as renderHomeCards } from './js/components/renderCards.js';
+import checkAndRenderTarget from './js/components/renderCard';
 import { renderHeaderHome } from './js/components/renderHeader.js';
 import {
   requestPopularMovies,
-  requestMovieByID,
+  // requestMovieByID,
 } from './js/services/apiService.js';
 
 // ============================ MAIN PARAMS ======================================
@@ -24,11 +25,7 @@ const refs = {
 
 const handleCardClick = e => {
   e.preventDefault();
-  requestMovieByID(e.target.closest('.list-item').dataset.movieId)
-    .then(renderCard)
-    .finally(() => {
-      //TODO add watched/queue btn click events
-    });
+  checkAndRenderTarget();
 };
 
 // ========================== RENDERS   =============================
