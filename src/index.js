@@ -5,7 +5,11 @@ import {
   // renderHeader as renderHeaderHome,
 } from './js/components/renderCards.js';
 
-import { requestPopularMovies } from './js/services/apiService.js';
+// ============================ MAIN PARAMS ======================================
+
+let homePage = 1;
+let watchedPage = 1;
+let queuePage = 1;
 
 const refs = {
   // ============== containers ==================
@@ -14,13 +18,31 @@ const refs = {
   // =============== btns/inputs ================
 };
 
+// ========================== HANDLERS  =============================
+
+const handleCardClick = e => {
+  e.preventDefault();
+  requestMovieByID(e.target.closest('.list-item').dataset.movieId)
+    .then(data => renderCard(refs.mainContainer, data))
+    .finally(() => {
+      //TODO add watched/queue btn click events
+    });
+};
+
 // ========================== RENDERS   =============================
 
 const renderHomePage = () => {
   renderHeaderHome(refs.headerContainer);
-  requestPopularMovies(1).then(data =>
-    renderHomeCards(refs.mainContainer, data),
-  );
+  refs.homeBtn = document.querySelector('#link-home');
+  refs.libraryBtn = document.querySelector('#link-library');
+
+  requestPopularMovies(homePage)
+    .then(data => renderCards(refs.mainContainer, data))
+    .finally(() => {
+      refs.mainContainer
+        .querySelector('.movie-list')
+        .addEventListener('click', handleCardClick);
+    });
 };
 
 // ==========================    EVENTS  =============================
