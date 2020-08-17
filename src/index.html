@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header header__details">
+      <div class="header--overlay">
+        <div class="container">
+          <nav class="header-nav">
+            <div class="wrapper__header-nav">
+              <svg class="logo__icon" width="30px" height="25px">
+                <use href="./assets/icons/symbol-defs.svg#film"></use>
+              </svg>
+              <a class="logo__link" href="#">
+                <h1 class="logo__title">Filmoteka</h1></a
+              >
+
+              <ul class="header-nav__list list-style">
+                <li class="header-nav__item">
+                  <a class="header-nav__link"
+                    ><span class="wrapper-nav__item">Home</span></a
+                  >
+                </li>
+                <li class="header-nav__item">
+                  <a class="header-nav__link"
+                    ><span class="wrapper-nav__item">My library</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="wrapper-header-btn visually-hidden">
+            <button class="header-btn">Watched</button>
+            <button class="header-btn">Queue</button>
+          </div>
+
+          <form class="header-search__form visually-hidden">
+            <label class="header-search">
+              <input
+                class="header-search__input"
+                type="text"
+                name="search__films"
+                placeholder="Поиск фильмов"
+              />
+            </label>
+          </form>
+          <p class="header-search__came-back visually-hidden">
+            Search result not successful. Enter the correct movie name and try
+            again.
+          </p>
+        </div>
+      </div>
+    </header>
+    <section class="card">
+      <div class="container">
+        <div class="card__wrapper">
+          <img
+            src="https://static3.depositphotos.com/1004996/226/i/450/depositphotos_2260019-stock-photo-glowing-font-shiny-letter-s.jpg"
+            class="card__img"
+            alt=""
+            width="280"
+            height="404"
+          />
+          <div class="card__box">
+            <h2 class="card__title">A Fistful of lead</h2>
+            <div class="card__desc">
+              <ul class="card__list--name list-style">
+                <li class="card__item">Vote / Votes</li>
+                <li class="card__item">Popularity</li>
+                <li class="card__item">Original Title</li>
+                <li class="card__item">Genre</li>
+              </ul>
+              <ul class="card__list--desc list-style">
+                <li class="card__item">
+                  <span class="card__item--active">23</span
+                  ><span class="line">/</span>234
+                </li>
+                <li class="card__item">faffwegv</li>
+                <li class="card__item">dfsdgfsgs</li>
+                <li class="card__item">dgrgerh</li>
+              </ul>
+            </div>
+            <div class="card__text desc">
+              <h3 class="desc__title">fsdfsdfvsdfs</h3>
+              <p class="desc__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+                ratione velit magnam minima dolores, tempore odio corrupti
+                blanditiis aliquid dolorem nam ab possimus fugiat, at deleniti
+                nulla assumenda iure accusamus! Id sunt voluptate provident
+                reprehenderit harum! Magnam nihil a perspiciatis amet! Ducimus
+                quo odio officia a expedita doloribus, exercitationem quibusdam.
+              </p>
+            </div>
+            <div class="btn">
+              <button class="btn__act">ADD TO WATCHED</button>
+              <button class="btn__act">ADD TO QUEUE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        <div class="pagination-container">
+      <nav aria-label="movie-list_pagination" class="movie-list_pagination">
+        <ul class="pagination pagination_list">
+          <li class="page-item pagination_button">
+            <a
+              class="pagination-link pagination-link__focus arrow-butt"
+              href="#"
+              ><svg
+                id="arrow"
+                class="arrow"
+                viewBox="0 0 512 512"
+                height="15"
+                width="15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m206.812 34.446-206.812 206.673 206.743 206.674 24.353-24.284-165.167-165.167h416.31v-34.445h-416.31l165.236-165.236z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link" href="#"
+              ><p class="pagination-number">...</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">1</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">12</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link pagination-link__focus" href="#"
+              ><p class="pagination-number">123</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a class="pagination-link" href="#"
+              ><p class="pagination-number">...</p></a
+            >
+          </li>
+          <li class="page-item pagination_button">
+            <a
+              class="pagination-link pagination-link__focus arrow-butt rotate"
+              href="#"
+              ><svg
+                id="arrow"
+                class="arrow"
+                viewBox="0 0 512 512"
+                height="15"
+                width="15"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m206.812 34.446-206.812 206.673 206.743 206.674 24.353-24.284-165.167-165.167h416.31v-34.445h-416.31l165.236-165.236z"
+                ></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">
+          &copy; 2020 | All Rights Reserved Developed with
+          <span class="footer-text__accent">GoIT Student</span>
+        </p>
+      </div>
+    </footer>
+    <script src="/src/index.js"></script>
+  </body>
+</html>

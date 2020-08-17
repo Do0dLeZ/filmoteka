@@ -1,0 +1,19 @@
+.footer {
+  padding: 30px 0;
+  background-color: #f7f7f7;
+}
+.footer-text__accent {
+  text-decoration-line: underline;
+}
+
+.footer-text__icon {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 15px;
+
+    background-image: url(/src/assets/icons/filmoteka-icons/SVG/favorite-heart-button.svg);
+  }
+}
