@@ -86,7 +86,7 @@
 
 @media screen and (min-width: 1024px) {
   .movie-list {
-    width: 870px;
+    width: 1200px;
   }
   .list-item_poster {
     max-width: 270px;
@@ -99,7 +99,7 @@
     margin-bottom: 30px;
     margin-right: 30px;
   }
-  .list-item:nth-child(3n) {
+  .list-item:nth-child(4n) {
     margin-right: 0;
   }
 }

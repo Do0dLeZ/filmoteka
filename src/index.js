@@ -1,6 +1,6 @@
 import './sass/main.scss';
 
-import { renderCardsAndPagination as renderHomeCards } from './js/components/renderCards.js';
+import { renderCards, renderCard } from './js/components/renderCards.js';
 import { renderHeaderHome } from './js/components/renderHeader.js';
 import {
   requestPopularMovies,
@@ -25,7 +25,7 @@ const refs = {
 const handleCardClick = e => {
   e.preventDefault();
   requestMovieByID(e.target.closest('.list-item').dataset.movieId)
-    .then(renderCard)
+    .then(data => renderCard(refs.mainContainer, data))
     .finally(() => {
       //TODO add watched/queue btn click events
     });
@@ -39,7 +39,7 @@ const renderHomePage = () => {
   refs.libraryBtn = document.querySelector('#link-library');
 
   requestPopularMovies(homePage)
-    .then(data => renderHomeCards(refs.mainContainer, data))
+    .then(data => renderCards(refs.mainContainer, data))
     .finally(() => {
       refs.mainContainer
         .querySelector('.movie-list')
