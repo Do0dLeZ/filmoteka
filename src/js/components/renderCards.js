@@ -9,10 +9,10 @@ const renderCards = (elem, data) => {
   elem.insertAdjacentHTML('afterbegin', cardsTemplate({ movies }));
 };
 
-const renderCard = (elem, data) => {
-  elem.textContent = '';
-  console.log(data);
-  elem.insertAdjacentHTML('beforeend', templateCard(data));
-};
+// const renderCard = (elem, data) => {
+//   elem.textContent = '';
+//   console.log(data);
+//   elem.insertAdjacentHTML('beforeend', templateCard(data));
+// };
 
-export { renderCards, renderCard };
+export { renderCards };
