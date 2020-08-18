@@ -1,13 +1,20 @@
 import './sass/main.scss';
-
-import pagination from './js/components/pagination';
-
+import renderHeaderHome from './js/components/renderHeader';
 import {
   renderCardsAndPagination as renderHomeCards,
-  renderHeader as renderHomeHeader,
+  // renderHeader as renderHeaderHome,
 } from './js/components/renderCards.js';
+import { renderCards, renderCard } from './js/components/renderCards.js';
+import {
+  requestPopularMovies,
+  requestMovieByID,
+} from './js/services/apiService.js';
+import './js/components/pagination';
+// ============================ MAIN PARAMS ======================================
 
-import { requestPopularMovies } from './js/services/apiService.js';
+let homePage = 1;
+let watchedPage = 1;
+let queuePage = 1;
 
 const refs = {
   // ============== containers ==================
@@ -16,15 +23,33 @@ const refs = {
   // =============== btns/inputs ================
 };
 
+// ========================== HANDLERS  =============================
+
+const handleCardClick = e => {
+  e.preventDefault();
+  requestMovieByID(e.target.closest('.list-item').dataset.movieId)
+    .then(data => renderCard(refs.mainContainer, data))
+    .finally(() => {
+      //TODO add watched/queue btn click events
+    });
+};
+
 // ========================== RENDERS   =============================
 
-const renderHomePage = () => {
-  //   renderHomeHeader(refs.headerContainer);
-  requestPopularMovies(1).then(data =>
-    renderHomeCards(refs.mainContainer, data),
-  );
-};
+// const renderHomePage = () => {
+//   renderHeaderHome(refs.headerContainer);
+//   refs.homeBtn = document.querySelector('#link-home');
+//   refs.libraryBtn = document.querySelector('#link-library');
+
+//   requestPopularMovies(homePage)
+//     .then(data => renderCards(refs.mainContainer, data))
+//     .finally(() => {
+//       refs.mainContainer
+//         .querySelector('.movie-list')
+//         .addEventListener('click', handleCardClick);
+//     });
+// };
 
 // ==========================    EVENTS  =============================
 
-renderHomePage();
+// renderHomePage();

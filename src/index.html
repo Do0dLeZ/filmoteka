@@ -12,126 +12,23 @@
     <title>Document</title>
   </head>
   <body>
+    <header class="header"></header>
 
-    <header class="header">
-      <div class="header--overlay">
-        <div class="container">
-          <nav class="header-nav">
-            <div class="wrapper__header-nav">
-              <svg class="logo__icon" width="30px" height="25px">
-                <use href="./assets/icons/symbol-defs.svg#film"></use>
-              </svg>
-              <a class="logo__link" href="#">
-                <h1 class="logo__title">Filmoteka</h1></a
-              >
-
-              <ul class="header-nav__list list-style">
-                <li class="header-nav__item">
-                  <a class="header-nav__link"
-                    ><span class="wrapper-nav__item">Home</span></a
-                  >
-                </li>
-                <li class="header-nav__item">
-                  <a class="header-nav__link"
-                    ><span class="wrapper-nav__item">My library</span></a
-                  >
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          <div class="wrapper-header-btn visually-hidden">
-            <button class="header-btn">Watched</button>
-            <button class="header-btn">Queue</button>
-          </div>
-
-          <form class="header-search__form input-js">
-            <label class="header-search">
-              <input
-                class="header-search__input input-js"
-                type="text"
-                name="search__films"
-                placeholder="Поиск фильмов"
-              />
-            </label>
-          </form>
-          <p class="header-search__came-back visually-hidden">
-            Search result not successful. Enter the correct movie name and try
-            again.
-          </p>
-        </div>
-      </div>
-    </header>
-
-    <div class="info-container"></div>
-
-      
-    
-    <section class="card">
-      <div class="container visually-hidden">
-        <div class="card__wrapper">
-          <img
-            src="https://static3.depositphotos.com/1004996/226/i/450/depositphotos_2260019-stock-photo-glowing-font-shiny-letter-s.jpg"
-            class="card__img"
-            alt=""
-            width="280"
-            height="404"
-          />
-          <div class="card__box">
-            <h2 class="card__title">A Fistful of lead</h2>
-            <div class="card__desc">
-              <ul class="card__list--name list-style">
-                <li class="card__item">Vote / Votes</li>
-                <li class="card__item">Popularity</li>
-                <li class="card__item">Original Title</li>
-                <li class="card__item">Genre</li>
-              </ul>
-              <ul class="card__list--desc list-style">
-                <li class="card__item">
-                  <span class="card__item--active">23</span
-                  ><span class="line">/</span>234
-                </li>
-                <li class="card__item">faffwegv</li>
-                <li class="card__item">dfsdgfsgs</li>
-                <li class="card__item">dgrgerh</li>
-              </ul>
-            </div>
-            <div class="card__text desc">
-              <h3 class="desc__title">fsdfsdfvsdfs</h3>
-              <p class="desc__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-                ratione velit magnam minima dolores, tempore odio corrupti
-                blanditiis aliquid dolorem nam ab possimus fugiat, at deleniti
-                nulla assumenda iure accusamus! Id sunt voluptate provident
-                reprehenderit harum! Magnam nihil a perspiciatis amet! Ducimus
-                quo odio officia a expedita doloribus, exercitationem quibusdam.
-              </p>
-            </div>
-            <div class="btn">
-              <button class="btn__act">ADD TO WATCHED</button>
-              <button class="btn__act">ADD TO QUEUE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="pagination-container pagination-wrapper display-none">
+    <div class="info-container" id="cards"></div>
+    <div class="pagination-container pagination-wrapper">
       <nav
         aria-label="movie-list_pagination"
         class="movie-list_pagination navigation-js"
       >
-
-    <div class="pagination-container">
-      <nav aria-label="movie-list_pagination" class="movie-list_pagination">
-
         <ul class="pagination pagination_list">
           <li class="page-item">
             <bottun
               class="pagination_button pagination-link pagination-link__focus arrow-butt"
               href="#"
+              id="previous-page"
               ><svg
-                id="previous-page"
                 class="arrow previous-page"
+                id="previous-page-arrow"
                 viewBox="0 0 512 512"
                 height="15"
                 width="15"
@@ -146,7 +43,6 @@
           <li class="page-item">
             <button
               class="pagination-link pagination-number pagination-link__focus pagination-links first-page display-none"
-              href=""
               id="first-page"
             ></button>
           </li>
@@ -160,7 +56,7 @@
           </li>
           <li class="page-item">
             <bottun
-              class="pagination_button pagination-link pagination-number pagination-link__focus btn-page"
+              class="pagination_button pagination-link pagination-number pagination-link__focus btn-page active"
               href="#"
               >1</bottun
             >
@@ -203,18 +99,17 @@
           </li>
           <li class="page-item">
             <button
-              class="pagination-link pagination-number pagination-link__focus last-page display-none pagination-links"
-              href=""
+              class="pagination-link pagination-number pagination-link__focus last-page pagination-links"
               id="last-page"
             ></button>
           </li>
           <li class="page-item">
             <bottun
-              class="pagination_button pagination-links pagination-link__focus pagination-number arrow-butt rotate next-page"
-              id="next-page"
+              class="pagination_button pagination-link pagination-link__focus arrow-butt rotate next-page"
               href="#"
+              id="next-page"
               ><svg
-                id="arrow"
+                id="next-page-arrow"
                 class="arrow"
                 viewBox="0 0 512 512"
                 height="15"
@@ -238,6 +133,7 @@
         </p>
       </div>
     </footer>
+
     <script src="/src/index.js"></script>
   </body>
 </html>

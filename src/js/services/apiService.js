@@ -57,7 +57,7 @@ const requestPopularMovies = page => {
 const requestMovieByID = id => {
   return axios
     .get(`/3/movie/${id}`, { params: { ...mainRequestParams } })
-    .then(response => response.data.results[0]);
+    .then(response => response.data);
 };
 
 const requestSearchByQuery = (query, page) => {

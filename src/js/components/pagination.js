@@ -1,47 +1,102 @@
-import { requestSearchByQuery } from '../services/apiService';
+import {
+  requestSearchByQuery,
+  requestPopularMovies,
+  requestMovieByID,
+} from '../services/apiService';
+import { renderCards, renderCard } from './renderCards';
+import renderHeaderHome from './renderHeader';
 
 const {
   paginationListWrapper,
   paginationList,
   lastPage,
   firstPage,
-  input,
+
   paginationWrapper,
   nextPages,
   pages,
   previousPages,
   nextPage,
+  headerContainer,
+  mainContainer,
+  header,
 } = {
+  header: document.querySelector('.header'),
   paginationListWrapper: document.querySelector('.navigation-js'),
   paginationList: document.querySelector('.pagination-js'),
   lastPage: document.querySelector('.last-page'),
   firstPage: document.querySelector('.first-page'),
-  input: document.querySelector('.input-js'),
+
   paginationWrapper: document.querySelector('.pagination-wrapper'),
   nextPages: document.querySelector('#next-pages'),
   previousPages: document.querySelector('#previous-pages'),
   nextPage: document.querySelector('.next-page'),
   pages: document.querySelectorAll('.btn-page'),
+  headerContainer: document.querySelector('.header'),
+  mainContainer: document.querySelector('.info-container'),
 };
 
 paginationListWrapper.addEventListener('click', togglePagination);
-input.addEventListener('submit', searchFilmValue);
 
 let eventTarget;
 let activePage = 1;
 let totalPage;
 let markupPage = 1;
-
 let search;
 
-async function paginationServiceRequestSearchByQuery(activePage) {
-  await requestSearchByQuery(search, activePage).then(data => {
-    totalPage = data.total_pages;
-    console.log(data.results);
-  });
-
-  showPaginationButtons();
-}
+const handleCardClick = async e => {
+  e.preventDefault();
+  await requestMovieByID(e.target.closest('.list-item').dataset.movieId)
+    .then(data => renderCard(mainContainer, data))
+    .finally(() => {
+      //TODO add watched/queue btn click events
+    });
+};
+const apiPaginationSearch = async (search, activePage) => {
+  await requestSearchByQuery(search, activePage)
+    .then(data => {
+      totalPage = data.total_pages;
+      mainContainer.innerHTML = '';
+      renderCards(mainContainer, data);
+    })
+    .finally(() => {
+      showPaginationButtons();
+      mainContainer
+        .querySelector('.movie-list')
+        .addEventListener('click', handleCardClick);
+      header
+        .querySelector('.input-js')
+        .addEventListener('submit', searchFilmValue);
+    });
+};
+const apiPaginationPopular = async activePage => {
+  await requestPopularMovies(activePage)
+    .then(data => {
+      totalPage = data.total_pages;
+      mainContainer.innerHTML = '';
+      renderCards(mainContainer, data);
+    })
+    .finally(() => {
+      showPaginationButtons();
+      mainContainer
+        .querySelector('.movie-list')
+        .addEventListener('click', handleCardClick);
+      header
+        .querySelector('.input-js')
+        .addEventListener('submit', searchFilmValue);
+    });
+};
+const renderHomePage = () => {
+  headerContainer.innerHTML = '';
+  renderHeaderHome(headerContainer);
+  const homeBtn = document.querySelector('#link-home');
+  const libraryBtn = document.querySelector('#link-library');
+  if (search) {
+    apiPaginationSearch(search, activePage);
+  } else {
+    apiPaginationPopular(activePage);
+  }
+};
 
 function showPaginationButtons() {
   paginationWrapper.classList.remove('display-none');
@@ -64,9 +119,7 @@ function showPaginationButtons() {
     nextPages.classList.add('display-none');
     lastPage.classList.add('display-none');
   }
-  if (activePage > totalPage) {
-    nextPage.setAttribute(disabled, disabled);
-  }
+
   pages.forEach(page => {
     if (Number(page.innerHTML) === activePage) {
       page.classList.add('active');
@@ -86,6 +139,9 @@ function showPaginationButtons() {
 
 function togglePagination(event) {
   eventTarget = event.target.id;
+  if (totalPage < markupPage) {
+    markupPage = totalPage;
+  }
   const className =
     'pagination_button pagination-link pagination-number pagination-link__focus btn-page';
   if (eventTarget === 'first-page') {
@@ -101,7 +157,8 @@ function togglePagination(event) {
 
   if (event.target.className === className) {
     activePage = Number(event.target.innerText);
-    paginationServiceRequestSearchByQuery(activePage);
+    renderHomePage();
+    showPaginationButtons();
   }
 
   if (eventTarget === 'previous-pages') {
@@ -115,31 +172,31 @@ function togglePagination(event) {
     markupPaginationList();
     showPaginationButtons();
   }
-  if (totalPage < markupPage) {
-    markupPage = totalPage;
-  }
 
-  if (eventTarget === 'next-page') {
+  if (eventTarget === 'next-page' || eventTarget === 'next-page-arrow') {
     if (activePage === totalPage) {
       return;
     }
     activePage += 1;
-    paginationServiceRequestSearchByQuery(activePage);
+    renderHomePage(activePage);
     if (activePage > Number(pages[4].innerHTML)) {
       markupPage += 5;
       markupPaginationList();
     }
-  } else if (eventTarget === 'previous-page') {
+  }
+  if (
+    eventTarget === 'previous-page' ||
+    eventTarget === 'previous-page-arrow'
+  ) {
     if (activePage === 1) {
       return;
     }
     activePage -= 1;
-
-    if (activePage < Number(pages[4].innerHTML)) {
+    renderHomePage(activePage);
+    if (activePage < Number(pages[0].innerHTML)) {
       markupPage -= 5;
       markupPaginationList();
     }
-    paginationServiceRequestSearchByQuery(activePage);
   }
 }
 
@@ -152,73 +209,9 @@ function markupPaginationList() {
 function searchFilmValue(event) {
   event.preventDefault();
   search = event.currentTarget.elements.search__films.value;
+  console.log(event.currentTarget.elements.search__films.value);
+
   markupPaginationList();
-  return paginationServiceRequestSearchByQuery(activePage);
+  return renderHomePage(activePage);
 }
-
-// class Pagination {
-//   constructor() {
-//     eventTarget = null;
-//     activePage = null;
-//     totalPage = null;
-//     markupPage = 5;
-//     value = 1;
-//     search = null;
-//   }
-
-//   paginationService(activePage) {
-//     apiService
-//       .getMoviesByInput(this.search, activePage)
-//       .then(data => console.log(data));
-//     paginationWrapper.classList.remove('display-none');
-//   }
-
-//   getMaxPagePagination(maxPages) {
-//     this.totalPage = maxPages;
-//     return totalPage;
-//   }
-
-//   togglePagination(event) {
-//     this.activePage = Number(event.target.innerText);
-
-//     if (this.eventTarget === 'previous-pages') {
-//       this.value -= 5;
-//       this.markupPage -= 5;
-//       paginationList.innerHTML = '';
-//     }
-//     if (this.totalPage < this.markupPage) {
-//       this.value = this.totalPage - 5;
-//       this.markupPage = this.totalPage;
-//     }
-//     this.eventTarget = event.target.id;
-
-//     if (this.eventTarget === 'next-page') {
-//       this.activePage += 1;
-//       paginationService(this.activePage);
-//     } else if (eventTarget === 'previous-page') {
-//       this.activePage -= 1;
-//       paginationService(this.activePage);
-//     }
-//     firstPage.innerHTML = 1;
-
-//     lastPage.innerHTML = this.totalPage;
-
-//     paginationService(this.activePage);
-//   }
-
-//   markupPaginationList() {
-//     for (let i = this.value; i <= this.markupPage; i += 1) {
-//       paginationList.insertAdjacentHTML(
-//         'beforeEnd',
-//         ` <li class="page-item"><button class="page-link" href="#">${i}</button></li>`,
-//       );
-//     }
-//   }
-
-//   searchFilmValue(event) {
-//     event.preventDefault();
-//     this.search = event.currentTarget.elements.search__films.value;
-//     this.markupPaginationList();
-//     return this.paginationService(this.activePage);
-//   }
-// }
+renderHomePage();
