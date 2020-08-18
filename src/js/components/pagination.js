@@ -52,7 +52,7 @@ const handleCardClick = async e => {
       //TODO add watched/queue btn click events
     });
 };
-const apiPaginationSearch = async (search, activePage) => {
+const apiPaginationSearch = async (search, activePage = 1) => {
   await requestSearchByQuery(search, activePage)
     .then(data => {
       totalPage = data.total_pages;
@@ -69,7 +69,7 @@ const apiPaginationSearch = async (search, activePage) => {
         .addEventListener('submit', searchFilmValue);
     });
 };
-const apiPaginationPopular = async activePage => {
+const apiPaginationPopular = async (activePage = 1) => {
   await requestPopularMovies(activePage)
     .then(data => {
       totalPage = data.total_pages;

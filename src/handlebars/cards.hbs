@@ -3,7 +3,7 @@
         {{#each movies}}
         <li class="list-item" data-movie-id="{{this.id}}">
             <div class="list-item_overlay">
-                <img class="list-item_poster" src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
+                <img data-movie-id="{{this.id}}" class="list-item_poster" src="https://image.tmdb.org/t/p/w500/{{poster_path}}"
                     alt="{{this.original_title}}" width="270">
             </div>
             <h4 class="list-item_text list-item_title">{{this.original_title}}</h4>
@@ -13,6 +13,6 @@
             </div>
         </li>
         {{/each}}
-    </ul>    
+    </ul>
 </div>
 
