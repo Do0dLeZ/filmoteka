@@ -4,10 +4,12 @@ import {
   renderCardsAndPagination as renderHomeCards,
   // renderHeader as renderHeaderHome,
 } from './js/components/renderCards.js';
-import { renderCards, renderCard } from './js/components/renderCards.js';
+import checkAndRenderTarget from './js/components/renderCard';
+
+import { renderCards } from './js/components/renderCards.js';
 import {
   requestPopularMovies,
-  requestMovieByID,
+  // requestMovieByID,
 } from './js/services/apiService.js';
 // ============================ MAIN PARAMS ======================================
 
@@ -26,11 +28,7 @@ const refs = {
 
 const handleCardClick = e => {
   e.preventDefault();
-  requestMovieByID(e.target.closest('.list-item').dataset.movieId)
-    .then(data => renderCard(refs.mainContainer, data))
-    .finally(() => {
-      //TODO add watched/queue btn click events
-    });
+  checkAndRenderTarget();
 };
 
 // ========================== RENDERS   =============================
