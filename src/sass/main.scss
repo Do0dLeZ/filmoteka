@@ -2,11 +2,11 @@
 @import './utils/_colors.scss';
 @import './utils/_base.scss';
 @import './utils/fonts';
-
+@import 'toastr';
 @import './components/card';
 
 @import './components/cards';
-
+@import '~bootstrap/scss/bootstrap';
 @import './components/header';
 @import './components/footer';
 

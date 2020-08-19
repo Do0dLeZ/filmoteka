@@ -3,6 +3,7 @@
 // ============================== IMPORTS   ==============================
 
 import axios from 'axios';
+import toastr from 'toastr';
 
 // ============================== PARAMS    ==============================
 
@@ -48,7 +49,13 @@ const initInfoForMovies = (movies = []) => {
 const requestPopularMovies = page => {
   return axios
     .get('/3/movie/popular', { params: { ...mainRequestParams, page } })
-    .then(response => response.data)
+    .then(response => {
+      console.log('response', response);
+      if (response.status > 300) {
+        toastr.info("sorry but I can't find a movie like this, try again");
+      }
+      return response.data;
+    })
     .catch(error => {
       throw new Error(error);
     });
@@ -63,7 +70,13 @@ const requestMovieByID = id => {
 const requestSearchByQuery = (query, page) => {
   return axios
     .get('3/search/movie', { params: { ...mainRequestParams, query, page } })
-    .then(response => response.data)
+    .then(response => {
+      if (response.status > 300) {
+        toastr.info("sorry but I can't find a movie like this, try again");
+        return requestPopularMovies();
+      }
+      response.data;
+    })
     .catch(error => {
       throw new Error(error);
     });

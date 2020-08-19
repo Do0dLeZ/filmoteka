@@ -4,6 +4,7 @@ import {
   requestMovieByID,
 } from '../services/apiService';
 import { renderCards, renderCard } from './renderCards';
+
 import renderHeaderHome from './renderHeader';
 
 const {
@@ -37,29 +38,37 @@ const {
 };
 
 paginationListWrapper.addEventListener('click', togglePagination);
-
+let result = null;
 let eventTarget;
 let activePage = 1;
 let totalPage;
 let markupPage = 1;
 let search;
-
+let headerSearchCameBack;
 const handleCardClick = async e => {
   e.preventDefault();
+  paginationListWrapper.classList.add('display-none');
   await requestMovieByID(e.target.closest('.list-item').dataset.movieId)
-    .then(data => renderCard(mainContainer, data))
+    .then(data => {
+      renderCard(mainContainer, data);
+    })
     .finally(() => {
       //TODO add watched/queue btn click events
     });
 };
-const apiPaginationSearch = async (search, activePage = 1) => {
+const apiPaginationSearch = async (search, activePage) => {
   await requestSearchByQuery(search, activePage)
     .then(data => {
+      if (data.results.length === 0) {
+        errSearchShow();
+        return;
+      }
       totalPage = data.total_pages;
+
       mainContainer.innerHTML = '';
       renderCards(mainContainer, data);
     })
-    .finally(() => {
+    .finally(data => {
       showPaginationButtons();
       mainContainer
         .querySelector('.movie-list')
@@ -72,6 +81,13 @@ const apiPaginationSearch = async (search, activePage = 1) => {
 const apiPaginationPopular = async (activePage = 1) => {
   await requestPopularMovies(activePage)
     .then(data => {
+      console.log('data', data);
+      if (data.results.length === 0) {
+        errSearchShow();
+        return;
+      }
+      result = data.results.length;
+      console.log(result);
       totalPage = data.total_pages;
       mainContainer.innerHTML = '';
       renderCards(mainContainer, data);
@@ -91,6 +107,7 @@ const renderHomePage = () => {
   renderHeaderHome(headerContainer);
   const homeBtn = document.querySelector('#link-home');
   const libraryBtn = document.querySelector('#link-library');
+  headerSearchCameBack = document.querySelector('.header-search__came-back');
   if (search) {
     apiPaginationSearch(search, activePage);
   } else {
@@ -208,10 +225,23 @@ function markupPaginationList() {
 
 function searchFilmValue(event) {
   event.preventDefault();
-  search = event.currentTarget.elements.search__films.value;
-  console.log(event.currentTarget.elements.search__films.value);
+
+  const regExp = /^[a-z]+$/i;
+  const strSearch = event.currentTarget.elements.search__films.value;
+
+  if (!regExp.test(strSearch)) {
+    errSearchShow();
+    return;
+  }
+  search = strSearch;
+
+  console.log(regExp.test(strSearch));
 
   markupPaginationList();
   return renderHomePage(activePage);
+}
+
+function errSearchShow() {
+  return headerSearchCameBack.classList.remove('visually-hidden');
 }
 renderHomePage();
